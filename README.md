@@ -4,3 +4,6 @@
 
 # zabbixinstall.sh
    Centos7，zabbix3.4.x，Mariadb
+   
+# http status monitor
+   sh http_status_monitor www.baidu.com

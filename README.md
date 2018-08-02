@@ -7,3 +7,6 @@
    
 # http status monitor
    sh http_status_monitor www.baidu.com
+  
+# backup_mysql.sh restore_mysql.sh
+   两个文件需要配套使用。使用前请根据实情情况，先修改参数。

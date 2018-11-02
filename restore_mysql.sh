@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-# 此脚本尚未测试！！！
-# 此脚本尚未测试！！！
-# 此脚本尚未测试！！！
+# 测试已可用！！！
 
 set -eu
 set -x
@@ -26,7 +24,6 @@ if [[ ! -d ${BACKUPDIR} ]]; then
   DATE_tmp=$(date +%Y%m -d '1 month ago')
   BACKUPDIR=${BACKUPDIR_prefix}/${DATE_tmp}
 fi
-
 # DATE=$(date +%Y-%m-%d_%H-%M-%S)
 # BACKUPNAME=${BACKUPNAME_prefix}-${DATE}
 BACKUPLOG=${BACKUPDIR}/backuplog
@@ -76,11 +73,11 @@ function restore_all() {
 }
 
 function stop_service() {
-  systemctl stop mysqld
+  systemctl stop mysqld || systemctl stop mariadb
 }
 
 function start_service() {
-  systemctl start mysqld
+  systemctl start mysqld  || systemctl start mariadb
 }
 
 function do_restore() {

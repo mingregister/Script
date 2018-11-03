@@ -57,8 +57,8 @@ function incremental_backup_per_week() {
 function clear_old_backup() {
   DATE_old=$(date +%Y%m -d '3 month ago')
   BACKUPDIR_old=${BACKUPDIR_prefix}/${DATE_old}
-  if [[ -f ${BACKUPDIR_old} ]]; then
-    rm -rf ${BACKUPDIR_old}/*
+  if [[ -d ${BACKUPDIR_old} ]]; then
+    rm -rf ${BACKUPDIR_old}
   fi
 }
 

@@ -1,3 +1,6 @@
+#!/bin/bash
+
+# 字符串切割，输出没有被“切割(匹配)”的部分。
 semverParse() {
     major="${1%%.*}"
     minor="${1#$major.}"

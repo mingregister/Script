@@ -43,6 +43,11 @@ function full_backup_per_month() {
 }
 
 function incremental_backup_per_week() {
+  # fix 必须1号备份bug
+  if [[ ! -f ${BACKUPLOG} ]]; then
+      full_backup_per_month
+      return 0
+  fi
   get_backup_basedir
 
   ${INNOBACKUPEX} --defaults-file=${DEFAULTSFILE} \
@@ -63,11 +68,12 @@ function clear_old_backup() {
 }
 
 function backup() {
-  if [[ $(/usr/bin/date -d today +\%e) -eq 1 ]]; then    # 必须是1号进行全备，不然会有bug
+  if [[ $(/usr/bin/date -d today +\%e) -eq 1 ]]; then
     full_backup_per_month
     clear_old_backup
   elif [[ $(date +%w) -eq 7 ]]; then
     incremental_backup_per_week
+    clear_old_backup
   fi
 }
 

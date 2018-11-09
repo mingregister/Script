@@ -38,12 +38,16 @@ function get_backup_basedir() {
 }
 
 function full_backup_per_month() {
+  # fix: 必须1号备份bug
+  if [[ -f ${BACKUPLOG} ]]; then
+      return 0
+  fi
   ${INNOBACKUPEX} --defaults-file=${DEFAULTSFILE} --no-timestamp --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} --socket=${MYSQL_SOCKET}  ${BACKUPDIR}/full-${BACKUPNAME}
   echo "FULL:${BACKUPDIR}/full-${BACKUPNAME}" >> ${BACKUPLOG}
 }
 
 function incremental_backup_per_week() {
-  # fix 必须1号备份bug
+  # fix: 必须1号备份bug
   if [[ ! -f ${BACKUPLOG} ]]; then
       full_backup_per_month
       return 0

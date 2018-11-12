@@ -1,0 +1,16 @@
+#!/usr/bin/expect
+
+set timeout 30
+#第1个参数，编号是0
+set ip [lindex $argv 0]                   
+#第2个参数，编号是1
+set password [lindex $argv 1]                
+
+spawn ssh-copy-id -i /home/zmhuang/.ssh/id_rsa.pub exp@$ip
+
+expect {
+         "(yes/no)?"  {send "yes\r";exp_continue}
+         "password:" {send "$password\r"}
+}
+
+expect eof

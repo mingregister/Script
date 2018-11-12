@@ -13,6 +13,7 @@
 
 # expect.exp
    使用：yum install expect
+         
          expect expect.exp youip youpassword
 
 # block

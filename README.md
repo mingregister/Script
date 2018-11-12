@@ -11,7 +11,7 @@
 # backup_mysql.sh restore_mysql.sh
    两个文件需要配套使用。使用前请根据实情情况，先修改参数。
 
-# expect.exp
+# ssh_expect.exp
    使用：yum install expect
          
          expect expect.exp youip youpassword

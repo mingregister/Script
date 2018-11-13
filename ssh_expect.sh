@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+set -eu
+# set -x
+# set -o pipefail
+
 ###Usage#####
 # 按如下格式填写${HOME}/sshinfo.csv的内容
 ## cat ${SSHINFO}

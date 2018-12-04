@@ -6,6 +6,7 @@ set -eu
 
 ###Usage#####
 # 按如下格式填写${HOME}/sshinfo.csv的内容
+# 注意这个文件的内容不能包括自身的ip, 注释set -eu或者就可以包括自身的ip了。
 ## cat ${SSHINFO}
 #192.168.160.192,zmhuang,admin123
 #192.168.160.193,zmhuang,admin123 
